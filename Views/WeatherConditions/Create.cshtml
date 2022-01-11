@@ -1,4 +1,5 @@
-﻿@model SurfThisUp.Models.Weather.WeatherCondition
+﻿@using SurfThisUp.Models.Weather;
+@model SurfThisUp.Models.Weather.WeatherCondition
 
 @{
     ViewData["Title"] = "Create";
@@ -24,7 +25,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="WeatherType" class="control-label"></label>
-                <select asp-for="WeatherType" class="form-control"></select>
+                <select asp-for="WeatherType" asp-items="Html.GetEnumSelectList<WeatherType>()" class="form-control">
+                    <option selected="selected" value="">Please select</option>
+                </select>
                 <span asp-validation-for="WeatherType" class="text-danger"></span>
             </div>
             <div class="form-group">
